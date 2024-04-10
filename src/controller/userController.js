@@ -58,3 +58,15 @@ async function deleteUser(req, res) {
     });
   }
 }
+
+async function getUserById(req, res) {
+  try {
+    const { id } = req.params;
+
+    const user = await userService.getUserById(id);
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).send({});
+  }
+}
